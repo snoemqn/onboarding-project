@@ -4,13 +4,13 @@ import axios from "axios";
 
 
 const todosURL = "/api/todos/"
-const defaultItem = { title: "", description: "", completed: false }
+const defaultItem = { id: "", title: "", description: "", completed: false }
 
 const App = () => {
-  const [viewCompleted, setViewCompleted] = useState(false);
-  const [todoList, setTodoList] = useState([]);
-  const [modal, setModal] = useState(false);
-  const [activeItem, setActiveItem] = useState(defaultItem);
+  const [viewCompleted, setViewCompleted] = useState<Boolean>(false);
+  const [todoList, setTodoList] = useState<TodoItem[]>([]);
+  const [modal, setModal] = useState<Boolean>(false);
+  const [activeItem, setActiveItem] = useState<TodoItem>(defaultItem);
 
   useEffect(() => refreshList(), [])
 
@@ -27,7 +27,7 @@ const App = () => {
     setModal(!modal);
   }
 
-  const handleSubmit = (item) => {
+  const handleSubmit = (item: TodoItem) => {
     toggle();
 
     if (item.id) {
@@ -41,7 +41,7 @@ const App = () => {
         .then((res) => refreshList());
     };
 
-  const handleDelete = (item) => {
+  const handleDelete = (item: TodoItem) => {
     axios
       .delete(`${todosURL}${item.id}/`)
       .then((res) => refreshList());
@@ -52,7 +52,7 @@ const App = () => {
     toggle()
   };
 
-  const editItem = (item) => {
+  const editItem = (item: TodoItem) => {
     setActiveItem(item);
     toggle()
   };
