@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, MouseEventHandler } from "react";
 import {
   Button,
   Modal,
@@ -11,11 +11,17 @@ import {
   Label,
 } from "reactstrap";
 
-const CustomModal = (props) => {
+interface ModalProps {
+  toggle: () => void,
+  activeItem: TodoItem,
+  onSave: (item: TodoItem) => void
+};
+
+const CustomModal = (props: ModalProps) => {
   const { toggle, activeItem, onSave } = props;
-  const [modalItem, setModalItem] = useState(activeItem)
+  const [modalItem, setModalItem] = useState<TodoItem>(activeItem)
   
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
 
     if (e.target.type === "checkbox") {
