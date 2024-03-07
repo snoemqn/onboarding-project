@@ -10,7 +10,7 @@ const defaultItem = {
   description: "", 
   completed: false,
   priority: 10,
-  due_date: "",
+  due_date: "1995-01-01",
 }
 
 const App = () => {

@@ -15,7 +15,7 @@ class Todo(models.Model):
             MaxValueValidator(10)
         ]
     ) # Lower number is higher priority.
-    due_date = models.DateTimeField(null=True)
+    due_date = models.DateTimeField()
 
     def _str_(self):
         return self.title
