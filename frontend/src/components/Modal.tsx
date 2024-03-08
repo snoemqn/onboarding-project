@@ -10,6 +10,7 @@ import {
   Input,
   Label,
 } from "reactstrap";
+import { isDate } from "util/types";
 
 interface ModalProps {
   toggle: () => void,
@@ -56,6 +57,29 @@ const CustomModal = (props: ModalProps) => {
               value={modalItem.description}
               onChange={handleChange}
               placeholder="Enter Todo description"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="todo-priority">Priority</Label>
+            <Input
+              type="number"
+              id="todo-priority"
+              name="priority"
+              value={modalItem.priority}
+              onChange={handleChange}
+              placeholder="10"
+              min={1}
+              max={10}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="todo-due-date">Due Date</Label>
+            <Input
+              type="date"
+              id="todo-due-date"
+              name="due_date"
+              value={ modalItem.due_date.slice(0, 10) }
+              onChange={handleChange}
             />
           </FormGroup>
           <FormGroup check>

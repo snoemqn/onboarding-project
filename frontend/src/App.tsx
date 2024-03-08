@@ -4,7 +4,14 @@ import axios from "axios";
 
 
 const todosURL = "/api/todos/"
-const defaultItem = { id: "", title: "", description: "", completed: false }
+const defaultItem = { 
+  id: "", 
+  title: "", 
+  description: "", 
+  completed: false,
+  priority: 10,
+  due_date: "1995-01-01",
+}
 
 const App = () => {
   const [viewCompleted, setViewCompleted] = useState<Boolean>(false);
